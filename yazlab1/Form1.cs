@@ -21,6 +21,7 @@ namespace yazlab1
 
         Bitmap bitmapMain;
         Bitmap reOpen;
+        Bitmap back;
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
@@ -44,21 +45,8 @@ namespace yazlab1
         }
         private void btnNegative_Click(object sender, EventArgs e)
         {
-            Transform(bitmapMain);
-            ptbDisplay.Image = bitmapMain;
-        }
-        public void Transform(Bitmap image)
-        {
-            //create a blank bitmap the same size as original
-            bitmapMain = new Bitmap(image.Width, image.Height);
-
-            //get a graphics object from the new image
-            Graphics g = Graphics.FromImage(bitmapMain);
-
-            // negative renk matrisi olusturuyoruz win7 icin
-            //bu kısım alıntı
-            ColorMatrix matris = new ColorMatrix(
-               new float[][]
+            save();
+            ColorMatrix colorMatrix = new ColorMatrix(new float[][]
                {
                   new float[] {-1, 0, 0, 0, 0},
                   new float[] {0, -1, 0, 0, 0},
@@ -66,22 +54,10 @@ namespace yazlab1
                   new float[] {0, 0, 0, 1, 0},
                   new float[] {1, 1, 1, 0, 1}
                });
-            // negative renk matrisi olusturuyoruz winXP icin
-            //bu kısım alıntı
-            matris.Matrix00 = matris.Matrix11 = matris.Matrix22 = -1f;
-            matris.Matrix33 = matris.Matrix44 = 1f;
-
-            // image attribute olusturuyoruz
-            ImageAttributes imageAttr = new ImageAttributes();
-            //renk matirisini ayarlıyoruz
-            imageAttr.SetColorMatrix(matris);
-
-            g.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height),
-                        0, 0, image.Width, image.Height, GraphicsUnit.Pixel, imageAttr);
-
-            //dispose the Graphics object
-            g.Dispose();
+            colorMatrixTransform(bitmapMain, colorMatrix);
+            ptbDisplay.Image = bitmapMain;
         }
+
         private void btnHistogram_Click(object sender, EventArgs e)
         {
             Rectangle rect = new Rectangle(0, 0, bitmapMain.Width, bitmapMain.Height);
@@ -196,12 +172,14 @@ namespace yazlab1
 
         private void btnRotataMinus90_Click(object sender, EventArgs e)
         {
+            save();
             bitmapMain = RotateImage(bitmapMain, -90);
             ptbDisplay.Image = bitmapMain;
         }
 
         private void btnRotataPlus90_Click(object sender, EventArgs e)
         {
+            save();
             bitmapMain = RotateImage(bitmapMain, +90);
             ptbDisplay.Image = bitmapMain;
         }
@@ -371,19 +349,7 @@ namespace yazlab1
 
         private void btnGrayScale_Click(object sender, EventArgs e)
         {
-            makeGrayscale(bitmapMain);
-            ptbDisplay.Image = bitmapMain;
-        }
-        public void makeGrayscale(Bitmap original)
-        {
-            //boş bitmap oluşturuyoruz aynı boyutta
-            Bitmap newBitmap = new Bitmap(original.Width, original.Height);
-
-            //graphice çeviriyoruz
-            Graphics g = Graphics.FromImage(newBitmap);
-
-            //renk matrisi oluşturuyoruz
-            //bu kısım alıntı
+            save();
             ColorMatrix colorMatrix = new ColorMatrix(
                new float[][]
                {
@@ -393,7 +359,18 @@ namespace yazlab1
                  new float[] {0, 0, 0, 1, 0},
                  new float[] {0, 0, 0, 0, 1}
                });
-            //
+            colorMatrixTransform(bitmapMain, colorMatrix);
+            ptbDisplay.Image = bitmapMain;
+        }
+
+        public void colorMatrixTransform(Bitmap original , ColorMatrix colorMatrix)
+        {
+            //boş bitmap oluşturuyoruz aynı boyutta
+            Bitmap newBitmap = new Bitmap(original.Width, original.Height);
+
+            //graphice çeviriyoruz
+            Graphics g = Graphics.FromImage(newBitmap);
+
             ImageAttributes attributes = new ImageAttributes();
 
             //matrisi ekliyoruz
@@ -404,6 +381,139 @@ namespace yazlab1
                0, 0, original.Width, original.Height, GraphicsUnit.Pixel, attributes);
 
             bitmapMain = newBitmap;
+        }
+
+        private void btnRedChannel_Click(object sender, EventArgs e)
+        {
+            save();
+            ColorMatrix colorMatrix = new ColorMatrix(
+               new float[][]
+               {
+                 new float[] {1, 0, 0, 0, 0},
+                 new float[] {0, 0, 0, 0, 0},
+                 new float[] {0, 0, 0, 0, 0},
+                 new float[] {0, 0, 0, 1, 0},
+                 new float[] {0, 0, 0, 0, 1}
+               });
+            colorMatrixTransform(bitmapMain, colorMatrix);
+            ptbDisplay.Image = bitmapMain;
+        }
+
+        private void btnBlueChannel_Click(object sender, EventArgs e)
+        {
+            save();
+            ColorMatrix colorMatrix = new ColorMatrix(
+               new float[][]
+               {
+                 new float[] {0, 0, 0, 0, 0},
+                 new float[] {0, 0, 0, 0, 0},
+                 new float[] {0, 0, 1, 0, 0},
+                 new float[] {0, 0, 0, 1, 0},
+                 new float[] {0, 0, 0, 0, 1}
+               });
+            colorMatrixTransform(bitmapMain, colorMatrix);
+            ptbDisplay.Image = bitmapMain;
+        }
+
+        private void btnGreenChannel_Click(object sender, EventArgs e)
+        {
+            save();
+            ColorMatrix colorMatrix = new ColorMatrix(
+               new float[][]
+               {
+                 new float[] {0, 0, 0, 0, 0},
+                 new float[] {0, 1, 0, 0, 0},
+                 new float[] {0, 0, 0, 0, 0},
+                 new float[] {0, 0, 0, 1, 0},
+                 new float[] {0, 0, 0, 0, 1}
+                 
+               });
+            colorMatrixTransform(bitmapMain, colorMatrix);
+            ptbDisplay.Image = bitmapMain;
+        }
+
+        private void btnGoStart_Click(object sender, EventArgs e)
+        {
+            bitmapMain = reOpen;
+            ptbDisplay.Image = bitmapMain;
+        }
+        private void save()
+        {
+            back = bitmapMain;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            bitmapMain = back;
+            ptbDisplay.Image = bitmapMain;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog dlgSave = new SaveFileDialog())
+            {
+                dlgSave.Title = "Save Image";
+                dlgSave.Filter = "Bitmap Images (*.bmp)|*.bmp|All Files (*.*)|*.*";
+                if (dlgSave.ShowDialog(this) == DialogResult.OK)
+                {
+                    //If user clicked OK, then save the image into the specified file
+                    bitmapMain.Save(dlgSave.FileName);
+                }
+            }
+        }
+
+        private void btnMirrorLeft_Click(object sender, EventArgs e)
+        {
+            save();
+            int width = bitmapMain.Width;
+            int height = bitmapMain.Height;
+           
+            //mirror image
+            Bitmap mirrorImg = new Bitmap(width, height);
+
+            for (int y = 0; y < height-1 ; y++)
+            {
+                for (int leftX = 0, rightX = width-1; leftX < width; leftX++, rightX--)
+                {
+                    //get source pixel value
+                    Color p = bitmapMain.GetPixel(leftX, y);
+
+                    //set mirror pixel value
+                    mirrorImg.SetPixel(leftX, y, p);
+                    mirrorImg.SetPixel(rightX, y, p);
+                }
+            }
+
+            bitmapMain = mirrorImg; 
+            //load mirror image in picture box
+            ptbDisplay.Image = bitmapMain;
+        }
+
+        private void btnMirrorRight_Click(object sender, EventArgs e)
+        {
+             save();
+            int width = bitmapMain.Width;
+            int height = bitmapMain.Height;
+           
+            //mirror image
+            Bitmap mirrorImg = new Bitmap(width, height);
+
+            for (int y = 0; y < height-1 ; y++)
+            {
+                for (int leftX = 0, rightX = width-1; leftX < width; leftX++, rightX--)
+                {
+                    //get source pixel value
+                    Color p = bitmapMain.GetPixel(rightX, y);
+
+                    //set mirror pixel value
+                    mirrorImg.SetPixel(rightX, y, p);
+                    mirrorImg.SetPixel(leftX, y, p);
+                }
+            }
+
+            bitmapMain = mirrorImg; 
+            //load mirror image in picture box
+            ptbDisplay.Image = bitmapMain;
         }
     }
 }
