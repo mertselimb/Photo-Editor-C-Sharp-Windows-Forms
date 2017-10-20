@@ -76,9 +76,77 @@ namespace yazlab1
         }
         #endregion 
         #region histogram
+        int[] grayHistogram = new int[256];
+        int[] redHistogram = new int[256];
+        int[] greenHistogram = new int[256];
+        int[] blueHistogram = new int[256];
         private void btnHistogram_Click(object sender, EventArgs e)
         {
+            RedHistogram();
+            GreenHistogram();
+            BlueHistogram();
+            DrawChart();
+        }
 
+        private void RedHistogram()
+        {
+            for (int i = 0; i < bitmapMain.Width; i++)
+            {
+                for (int j = 0; j < bitmapMain.Height; j++)
+                {
+                    Color c = bitmapMain.GetPixel(i, j);
+
+                    redHistogram[c.R]++;
+                }
+            }
+        }
+
+        private void GreenHistogram()
+        {
+            for (int i = 0; i < bitmapMain.Width; i++)
+            {
+                for (int j = 0; j < bitmapMain.Height; j++)
+                {
+                    Color c = bitmapMain.GetPixel(i, j);
+
+                    greenHistogram[c.G]++;
+                }
+            }
+        }
+
+        private void BlueHistogram()
+        {
+            for (int i = 0; i < bitmapMain.Width; i++)
+            {
+                for (int j = 0; j < bitmapMain.Height; j++)
+                {
+                    Color c = bitmapMain.GetPixel(i, j);
+
+                    blueHistogram[c.B]++;
+                }
+            }
+        }
+
+        private void DrawChart()
+        {
+
+            for (int i = 0; i < 256; i++)
+            {
+                chartRed.Series["Red"].Points.AddXY(i, redHistogram[i]);
+                chartRed.Series["Red"].Points[i].AxisLabel = "" + i;
+            }
+
+            for (int i = 0; i < 256; i++)
+            {
+                chartGreen.Series["Green"].Points.AddXY(i, greenHistogram[i]);
+                chartGreen.Series["Green"].Points[i].AxisLabel = "" + i;
+            }
+
+            for (int i = 0; i < 256; i++)
+            {
+                chartBlue.Series["Blue"].Points.AddXY(i, blueHistogram[i]);
+                chartBlue.Series["Blue"].Points[i].AxisLabel = "" + i;
+            }
         }
 
         #endregion

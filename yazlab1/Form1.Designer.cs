@@ -28,6 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.ptbDisplay = new System.Windows.Forms.PictureBox();
             this.btnNegative = new System.Windows.Forms.Button();
@@ -48,7 +57,13 @@
             this.btnScale = new System.Windows.Forms.Button();
             this.textX = new System.Windows.Forms.RichTextBox();
             this.textY = new System.Windows.Forms.RichTextBox();
+            this.chartRed = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartGreen = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartBlue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.ptbDisplay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGreen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartBlue)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBrowse
@@ -255,12 +270,75 @@
             this.textY.TabIndex = 19;
             this.textY.Text = "";
             // 
+            // chartRed
+            // 
+            this.chartRed.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.chartRed.BackColor = System.Drawing.Color.Transparent;
+            this.chartRed.BorderlineColor = System.Drawing.SystemColors.Window;
+            chartArea1.Name = "Red";
+            this.chartRed.ChartAreas.Add(chartArea1);
+            this.chartRed.Enabled = false;
+            legend1.Name = "Legend1";
+            this.chartRed.Legends.Add(legend1);
+            this.chartRed.Location = new System.Drawing.Point(-39, 737);
+            this.chartRed.Name = "chartRed";
+            this.chartRed.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chartRed.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Red};
+            series1.ChartArea = "Red";
+            series1.Legend = "Legend1";
+            series1.Name = "Red";
+            this.chartRed.Series.Add(series1);
+            this.chartRed.Size = new System.Drawing.Size(540, 93);
+            this.chartRed.TabIndex = 20;
+            this.chartRed.Text = "chart1";
+            // 
+            // chartGreen
+            // 
+            this.chartGreen.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.Name = "Green";
+            this.chartGreen.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartGreen.Legends.Add(legend2);
+            this.chartGreen.Location = new System.Drawing.Point(404, 737);
+            this.chartGreen.Name = "chartGreen";
+            this.chartGreen.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chartGreen.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))))};
+            series2.ChartArea = "Green";
+            series2.Legend = "Legend1";
+            series2.Name = "Green";
+            this.chartGreen.Series.Add(series2);
+            this.chartGreen.Size = new System.Drawing.Size(540, 96);
+            this.chartGreen.TabIndex = 21;
+            this.chartGreen.Text = "chart2";
+            // 
+            // chartBlue
+            // 
+            this.chartBlue.BackColor = System.Drawing.Color.Transparent;
+            chartArea3.Name = "Blue";
+            this.chartBlue.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartBlue.Legends.Add(legend3);
+            this.chartBlue.Location = new System.Drawing.Point(842, 737);
+            this.chartBlue.Name = "chartBlue";
+            series3.ChartArea = "Blue";
+            series3.Legend = "Legend1";
+            series3.Name = "Blue";
+            this.chartBlue.Series.Add(series3);
+            this.chartBlue.Size = new System.Drawing.Size(540, 96);
+            this.chartBlue.TabIndex = 22;
+            this.chartBlue.Text = "chart3";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1280, 743);
+            this.ClientSize = new System.Drawing.Size(1280, 810);
+            this.Controls.Add(this.chartBlue);
+            this.Controls.Add(this.chartGreen);
+            this.Controls.Add(this.chartRed);
             this.Controls.Add(this.textY);
             this.Controls.Add(this.textX);
             this.Controls.Add(this.btnScale);
@@ -284,6 +362,9 @@
             this.Name = "Form1";
             this.Text = "Yazlab 1";
             ((System.ComponentModel.ISupportInitialize)(this.ptbDisplay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGreen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartBlue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -310,6 +391,9 @@
         private System.Windows.Forms.Button btnScale;
         private System.Windows.Forms.RichTextBox textX;
         private System.Windows.Forms.RichTextBox textY;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartRed;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGreen;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartBlue;
     }
 }
 
