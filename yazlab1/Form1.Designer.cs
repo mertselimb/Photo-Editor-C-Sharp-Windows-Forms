@@ -57,13 +57,13 @@
             this.btnScale = new System.Windows.Forms.Button();
             this.textX = new System.Windows.Forms.RichTextBox();
             this.textY = new System.Windows.Forms.RichTextBox();
-            this.chartRed = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartGreen = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartBlue = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.red = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.green = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.blue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.ptbDisplay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartGreen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartBlue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.red)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.green)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blue)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBrowse
@@ -270,65 +270,65 @@
             this.textY.TabIndex = 19;
             this.textY.Text = "";
             // 
-            // chartRed
+            // red
             // 
-            this.chartRed.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.chartRed.BackColor = System.Drawing.Color.Transparent;
-            this.chartRed.BorderlineColor = System.Drawing.SystemColors.Window;
+            this.red.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.red.BackColor = System.Drawing.Color.Transparent;
+            this.red.BorderlineColor = System.Drawing.SystemColors.Window;
             chartArea1.Name = "Red";
-            this.chartRed.ChartAreas.Add(chartArea1);
-            this.chartRed.Enabled = false;
+            this.red.ChartAreas.Add(chartArea1);
+            this.red.Enabled = false;
             legend1.Name = "Legend1";
-            this.chartRed.Legends.Add(legend1);
-            this.chartRed.Location = new System.Drawing.Point(-39, 737);
-            this.chartRed.Name = "chartRed";
-            this.chartRed.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.chartRed.PaletteCustomColors = new System.Drawing.Color[] {
+            this.red.Legends.Add(legend1);
+            this.red.Location = new System.Drawing.Point(-39, 737);
+            this.red.Name = "red";
+            this.red.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.red.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Red};
             series1.ChartArea = "Red";
             series1.Legend = "Legend1";
-            series1.Name = "Red";
-            this.chartRed.Series.Add(series1);
-            this.chartRed.Size = new System.Drawing.Size(540, 93);
-            this.chartRed.TabIndex = 20;
-            this.chartRed.Text = "chart1";
+            series1.Name = "main";
+            this.red.Series.Add(series1);
+            this.red.Size = new System.Drawing.Size(540, 93);
+            this.red.TabIndex = 20;
+            this.red.Text = "chart1";
             // 
-            // chartGreen
+            // green
             // 
-            this.chartGreen.BackColor = System.Drawing.Color.Transparent;
+            this.green.BackColor = System.Drawing.Color.Transparent;
             chartArea2.Name = "Green";
-            this.chartGreen.ChartAreas.Add(chartArea2);
+            this.green.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chartGreen.Legends.Add(legend2);
-            this.chartGreen.Location = new System.Drawing.Point(404, 737);
-            this.chartGreen.Name = "chartGreen";
-            this.chartGreen.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.chartGreen.PaletteCustomColors = new System.Drawing.Color[] {
+            this.green.Legends.Add(legend2);
+            this.green.Location = new System.Drawing.Point(404, 737);
+            this.green.Name = "green";
+            this.green.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.green.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))))};
             series2.ChartArea = "Green";
             series2.Legend = "Legend1";
-            series2.Name = "Green";
-            this.chartGreen.Series.Add(series2);
-            this.chartGreen.Size = new System.Drawing.Size(540, 96);
-            this.chartGreen.TabIndex = 21;
-            this.chartGreen.Text = "chart2";
+            series2.Name = "main";
+            this.green.Series.Add(series2);
+            this.green.Size = new System.Drawing.Size(540, 96);
+            this.green.TabIndex = 21;
+            this.green.Text = "chart2";
             // 
-            // chartBlue
+            // blue
             // 
-            this.chartBlue.BackColor = System.Drawing.Color.Transparent;
+            this.blue.BackColor = System.Drawing.Color.Transparent;
             chartArea3.Name = "Blue";
-            this.chartBlue.ChartAreas.Add(chartArea3);
+            this.blue.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
-            this.chartBlue.Legends.Add(legend3);
-            this.chartBlue.Location = new System.Drawing.Point(842, 737);
-            this.chartBlue.Name = "chartBlue";
+            this.blue.Legends.Add(legend3);
+            this.blue.Location = new System.Drawing.Point(842, 737);
+            this.blue.Name = "blue";
             series3.ChartArea = "Blue";
             series3.Legend = "Legend1";
-            series3.Name = "Blue";
-            this.chartBlue.Series.Add(series3);
-            this.chartBlue.Size = new System.Drawing.Size(540, 96);
-            this.chartBlue.TabIndex = 22;
-            this.chartBlue.Text = "chart3";
+            series3.Name = "main";
+            this.blue.Series.Add(series3);
+            this.blue.Size = new System.Drawing.Size(540, 96);
+            this.blue.TabIndex = 22;
+            this.blue.Text = "chart3";
             // 
             // Form1
             // 
@@ -336,9 +336,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1280, 810);
-            this.Controls.Add(this.chartBlue);
-            this.Controls.Add(this.chartGreen);
-            this.Controls.Add(this.chartRed);
+            this.Controls.Add(this.blue);
+            this.Controls.Add(this.green);
+            this.Controls.Add(this.red);
             this.Controls.Add(this.textY);
             this.Controls.Add(this.textX);
             this.Controls.Add(this.btnScale);
@@ -362,9 +362,9 @@
             this.Name = "Form1";
             this.Text = "Yazlab 1";
             ((System.ComponentModel.ISupportInitialize)(this.ptbDisplay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartRed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartGreen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartBlue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.red)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.green)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -391,9 +391,9 @@
         private System.Windows.Forms.Button btnScale;
         private System.Windows.Forms.RichTextBox textX;
         private System.Windows.Forms.RichTextBox textY;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartRed;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartGreen;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartBlue;
+        private System.Windows.Forms.DataVisualization.Charting.Chart red;
+        private System.Windows.Forms.DataVisualization.Charting.Chart green;
+        private System.Windows.Forms.DataVisualization.Charting.Chart blue;
     }
 }
 

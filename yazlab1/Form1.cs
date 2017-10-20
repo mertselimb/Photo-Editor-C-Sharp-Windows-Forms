@@ -76,76 +76,82 @@ namespace yazlab1
         }
         #endregion 
         #region histogram
-        int[] grayHistogram = new int[256];
         int[] redHistogram = new int[256];
         int[] greenHistogram = new int[256];
         int[] blueHistogram = new int[256];
         private void btnHistogram_Click(object sender, EventArgs e)
         {
-            RedHistogram();
-            GreenHistogram();
-            BlueHistogram();
-            DrawChart();
+            if (emptyBMP() == true)
+            {
+                return;
+            }
+            redHistogram = new int[256];
+            greenHistogram = new int[256];
+            blueHistogram = new int[256];
+            processImageRed();
+            processImageGreen();
+            processImageBlue();
+            Draw();
         }
 
-        private void RedHistogram()
+        private void processImageRed()
         {
             for (int i = 0; i < bitmapMain.Width; i++)
             {
                 for (int j = 0; j < bitmapMain.Height; j++)
                 {
-                    Color c = bitmapMain.GetPixel(i, j);
+                    Color pixel = bitmapMain.GetPixel(i, j);
 
-                    redHistogram[c.R]++;
+                    redHistogram[pixel.R]++;
                 }
             }
         }
 
-        private void GreenHistogram()
+        private void processImageGreen()
         {
             for (int i = 0; i < bitmapMain.Width; i++)
             {
                 for (int j = 0; j < bitmapMain.Height; j++)
                 {
-                    Color c = bitmapMain.GetPixel(i, j);
+                    Color pixel = bitmapMain.GetPixel(i, j);
 
-                    greenHistogram[c.G]++;
+                    greenHistogram[pixel.G]++;
                 }
             }
         }
 
-        private void BlueHistogram()
+        private void processImageBlue()
         {
             for (int i = 0; i < bitmapMain.Width; i++)
             {
                 for (int j = 0; j < bitmapMain.Height; j++)
                 {
-                    Color c = bitmapMain.GetPixel(i, j);
+                    Color pixel = bitmapMain.GetPixel(i, j);
 
-                    blueHistogram[c.B]++;
+                    blueHistogram[pixel.B]++;
                 }
             }
         }
 
-        private void DrawChart()
+        private void Draw()
         {
 
             for (int i = 0; i < 256; i++)
             {
-                chartRed.Series["Red"].Points.AddXY(i, redHistogram[i]);
-                chartRed.Series["Red"].Points[i].AxisLabel = "" + i;
+                red.Series["main"].Points.AddXY(i, redHistogram[i]);
+                red.Series["main"].Points[i].AxisLabel = "" + i;
             }
 
             for (int i = 0; i < 256; i++)
             {
-                chartGreen.Series["Green"].Points.AddXY(i, greenHistogram[i]);
-                chartGreen.Series["Green"].Points[i].AxisLabel = "" + i;
+                green.Series["main"].Points.AddXY(i, greenHistogram[i]);
+                green.Series["main"].Points[i].AxisLabel = "" + i;
             }
 
             for (int i = 0; i < 256; i++)
             {
-                chartBlue.Series["Blue"].Points.AddXY(i, blueHistogram[i]);
-                chartBlue.Series["Blue"].Points[i].AxisLabel = "" + i;
+                blue.Series["main"].Points.AddXY(i, blueHistogram[i]);
+                blue.Series["main"].Points[i].AxisLabel = "" + i;
             }
         }
 
