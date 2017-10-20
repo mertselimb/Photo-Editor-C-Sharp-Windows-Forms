@@ -292,10 +292,12 @@
             this.red.Size = new System.Drawing.Size(540, 93);
             this.red.TabIndex = 20;
             this.red.Text = "chart1";
+            this.red.Visible = false;
             // 
             // green
             // 
             this.green.BackColor = System.Drawing.Color.Transparent;
+            this.green.BorderlineColor = System.Drawing.Color.Transparent;
             chartArea2.Name = "Green";
             this.green.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
@@ -312,10 +314,12 @@
             this.green.Size = new System.Drawing.Size(540, 96);
             this.green.TabIndex = 21;
             this.green.Text = "chart2";
+            this.green.Visible = false;
             // 
             // blue
             // 
             this.blue.BackColor = System.Drawing.Color.Transparent;
+            this.blue.BorderlineColor = System.Drawing.Color.Transparent;
             chartArea3.Name = "Blue";
             this.blue.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
@@ -329,6 +333,7 @@
             this.blue.Size = new System.Drawing.Size(540, 96);
             this.blue.TabIndex = 22;
             this.blue.Text = "chart3";
+            this.blue.Visible = false;
             // 
             // Form1
             // 
